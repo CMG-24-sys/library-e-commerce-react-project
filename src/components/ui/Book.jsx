@@ -5,24 +5,26 @@ import Rating from './Rating';
 import Price from './Price';
 
 const Book = ({ book }) => {
-    const [img, setImg] = useState();
+    const [img, setImg] = useState(null);
 
-    const mountedRef = useRef(true);
+    const mountedRef = useRef(true); 
 
     useEffect(() => {
         const image = new Image();
         image.src = book.url;
-        image.onload = () => {
-            setTimeout(() => {
-                if (mountedRef.current) {
-                    setImg(image);
-                }
-            }, 300);
+        const handleLoad = () => {
+        // Small delay to ensure smooth transition
+        setTimeout(() => {
+        setImg(image);
+        }, 300);
         };
+        image.addEventListener('load', handleLoad);
+        // Cleanup listener on unmount
         return () => {
-            mountedRef.current = false;
-        }
-    }, [book.url])
+        image.removeEventListener('load', handleLoad);
+        };
+        }, [book.url]);
+        
 
     return (
         <div className="book">
