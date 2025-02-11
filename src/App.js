@@ -51,7 +51,7 @@ return (
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/books" exact element={ <Books books={books} />} />
-        <Route path="/books/:id" element={ <BookInfo books={books} addToCart={addToCart} />} />
+        <Route path="/books/:id" element={ <BookInfo books={books} addToCart={addToCart} cart={cart} />} />
         <Route path="/cart" element={ <Cart books={books} cart={cart} changeQuantity={changeQuantity} removeItem={removeItem} />} />
       </Routes>
       <Footer />

@@ -40,8 +40,8 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                                             <span className="cart__book--price">
                                                 ${(book.salePrice || book.originalPrice).toFixed(2)}
                                             </span>
-                                            <button className="cart__book--remove">
-                                                onClick={() => removeItem(book)} Remove
+                                            <button className="cart__book--remove" onClick={() => removeItem(book)}>
+                                                Remove
                                             </button>
                                         </div>
                                     </div>
